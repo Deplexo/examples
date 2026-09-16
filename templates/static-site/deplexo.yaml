@@ -1,0 +1,3 @@
+framework: dockerfile
+dockerfile: Dockerfile
+port: 3000

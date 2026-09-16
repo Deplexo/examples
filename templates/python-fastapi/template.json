@@ -1,0 +1,19 @@
+{
+  "id": "python-fastapi",
+  "name": "FastAPI API",
+  "summary": "A typed Python API with automatic OpenAPI documentation.",
+  "description": "A FastAPI service with a health check, validated request models, OpenAPI documentation, and tests. The container runs a single Uvicorn process with a non-root user.",
+  "category": "APIs",
+  "language": "Python",
+  "framework": "FastAPI",
+  "service": "web",
+  "docs": "https://docs.deplexo.com/guides/docker/",
+  "memoryMB": 256,
+  "env": [],
+  "features": [
+    "Typed request models",
+    "OpenAPI at /docs",
+    "Health endpoint",
+    "Non-root container"
+  ]
+}

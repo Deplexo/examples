@@ -1,0 +1,32 @@
+{
+  "id": "go-discord-bot",
+  "name": "Go Discord bot",
+  "summary": "A DiscordGo starter with guild-scoped slash commands.",
+  "description": "A Discord Gateway bot with /ping and /about slash commands. Commands are registered in one development server for fast iteration, with minimal gateway intents and a graceful connection shutdown.",
+  "category": "Bots",
+  "language": "Go",
+  "framework": "DiscordGo",
+  "service": "worker",
+  "docs": "https://docs.deplexo.com/guides/discord-bot/",
+  "memoryMB": 128,
+  "env": [
+    {
+      "key": "DISCORD_BOT_TOKEN",
+      "description": "Bot token from the Discord Developer Portal.",
+      "secret": true,
+      "required": true
+    },
+    {
+      "key": "DISCORD_GUILD_ID",
+      "description": "ID of the development server where commands are registered.",
+      "secret": false,
+      "required": true
+    }
+  ],
+  "features": [
+    "Slash commands",
+    "Guild-scoped registration",
+    "Minimal gateway intents",
+    "Graceful shutdown"
+  ]
+}

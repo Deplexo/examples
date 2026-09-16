@@ -1,0 +1,13 @@
+{
+  "name": "@deplexo/examples",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate": "node scripts/catalog.mjs --check",
+    "catalog": "node scripts/catalog.mjs",
+    "test": "node --test scripts/*.test.mjs"
+  },
+  "devDependencies": {
+    "ajv": "8.20.0"
+  }
+}
