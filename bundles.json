@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "source": {
     "repository": "https://github.com/Deplexo/examples",
-    "revision": "45fcbab2e78dcf7d9e0c23d0837c0f25140b7ac4415cd1bd9b0808dc0ce43c5f"
+    "revision": "af796a9ff1e78c42ca48489e442ef6172d177606ffdc820806135b66f0941a8e"
   },
   "templates": {
     "go-discord-bot": {
@@ -59,7 +59,7 @@
       ]
     },
     "go-http-api": {
-      "digest": "4088af4e4e6a0d974dd73243f4a85c050b2c988d2f773612f1faca3fbe4a059b",
+      "digest": "80372b2b57bfec467322b5767673b146699ad113f9545a7d9ae57745e8b94150",
       "files": [
         {
           "path": ".dockerignore",
@@ -75,7 +75,7 @@
         },
         {
           "path": "Dockerfile",
-          "content": "FROM golang:1.27-alpine AS build\nWORKDIR /src\nCOPY go.mod go.sum ./\nRUN go mod download\nCOPY . .\nRUN CGO_ENABLED=0 go build -trimpath -ldflags=\"-s -w\" -o /app .\n\nFROM alpine:3.22\nRUN apk add --no-cache ca-certificates && addgroup -S app && adduser -S app -G app\nWORKDIR /app\nCOPY --from=build /app /app/server\nUSER app\nENV PORT=3000\nENTRYPOINT [\"/app/server\"]\n"
+          "content": "FROM golang:1.27-alpine AS build\nWORKDIR /src\nCOPY go.mod go.sum ./\nRUN go mod download\nCOPY . .\nRUN CGO_ENABLED=0 go build -trimpath -ldflags=\"-s -w\" -o /app .\n\nFROM alpine:3.24\nRUN apk add --no-cache ca-certificates && addgroup -S app && adduser -S app -G app\nWORKDIR /app\nCOPY --from=build /app /app/server\nUSER app\nENV PORT=3000\nENTRYPOINT [\"/app/server\"]\n"
         },
         {
           "path": "LICENSE",
