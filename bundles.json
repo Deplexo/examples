@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "source": {
     "repository": "https://github.com/Deplexo/examples",
-    "revision": "86271d55544f85decf46c7cd6ce2b605b89a04eda5cd7c6fbc0079f774ec34c5"
+    "revision": "91797b33a0a8b25d830762aacf94e302d4005e26da1814fcb2ceaa9d65a8c466"
   },
   "templates": {
     "go-discord-bot": {
@@ -165,7 +165,7 @@
       ]
     },
     "nextjs-portfolio": {
-      "digest": "e3c98162f717d45fbb5165919ac6bec6f6d156d798ec2188f9b78c5cad74ca55",
+      "digest": "2e52979fe73c50d725a2c59f4074a6c64e4f207c604ec5db18b1de3b76714f8d",
       "files": [
         {
           "path": ".dockerignore",
@@ -181,7 +181,7 @@
         },
         {
           "path": "Dockerfile",
-          "content": "FROM node:22-alpine AS build\nWORKDIR /app\nENV NEXT_TELEMETRY_DISABLED=1\nCOPY package.json package-lock.json ./\nRUN npm ci\nCOPY . .\nRUN npm run build\n\nFROM nginxinc/nginx-unprivileged:1.28-alpine\nCOPY nginx.conf /etc/nginx/nginx.conf\nCOPY --from=build /app/out /usr/share/nginx/html\nEXPOSE 3000\nENTRYPOINT [\"nginx\", \"-g\", \"daemon off;\"]\n"
+          "content": "FROM node:22-alpine AS build\nWORKDIR /app\nENV NEXT_TELEMETRY_DISABLED=1\nCOPY package.json package-lock.json ./\nRUN npm ci\nCOPY . .\nRUN npm run build\n\nFROM nginxinc/nginx-unprivileged:1.31-alpine\nCOPY nginx.conf /etc/nginx/nginx.conf\nCOPY --from=build /app/out /usr/share/nginx/html\nEXPOSE 3000\nENTRYPOINT [\"nginx\", \"-g\", \"daemon off;\"]\n"
         },
         {
           "path": "LICENSE",
