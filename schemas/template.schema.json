@@ -1,0 +1,105 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "summary",
+    "description",
+    "category",
+    "language",
+    "framework",
+    "service",
+    "docs",
+    "memoryMB",
+    "env",
+    "features"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 80
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 180
+    },
+    "description": {
+      "type": "string",
+      "minLength": 30
+    },
+    "category": {
+      "enum": [
+        "Websites",
+        "Bots",
+        "APIs"
+      ]
+    },
+    "language": {
+      "type": "string"
+    },
+    "framework": {
+      "type": "string"
+    },
+    "service": {
+      "enum": [
+        "web",
+        "worker"
+      ]
+    },
+    "docs": {
+      "type": "string",
+      "pattern": "^https://docs\\.deplexo\\.com/[a-z0-9/-]+/$"
+    },
+    "memoryMB": {
+      "type": "integer",
+      "minimum": 64
+    },
+    "env": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "key",
+          "description",
+          "required",
+          "secret"
+        ],
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9_]*$"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 10
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "secret": {
+            "type": "boolean"
+          },
+          "default": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "features": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

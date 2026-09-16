@@ -1,0 +1,189 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "repository": "https://github.com/Deplexo/examples",
+    "revision": "1981e110ed86db8431ea2f1caa0a228ce88c15a31e127899542384be219d4d09"
+  },
+  "templates": [
+    {
+      "id": "go-discord-bot",
+      "name": "Go Discord bot",
+      "summary": "A DiscordGo starter with guild-scoped slash commands.",
+      "description": "A Discord Gateway bot with /ping and /about slash commands. Commands are registered in one development server for fast iteration, with minimal gateway intents and a graceful connection shutdown.",
+      "category": "Bots",
+      "language": "Go",
+      "framework": "DiscordGo",
+      "service": "worker",
+      "docs": "https://docs.deplexo.com/guides/discord-bot/",
+      "memoryMB": 128,
+      "env": [
+        {
+          "key": "DISCORD_BOT_TOKEN",
+          "description": "Bot token from the Discord Developer Portal.",
+          "secret": true,
+          "required": true
+        },
+        {
+          "key": "DISCORD_GUILD_ID",
+          "description": "ID of the development server where commands are registered.",
+          "secret": false,
+          "required": true
+        }
+      ],
+      "features": [
+        "Slash commands",
+        "Guild-scoped registration",
+        "Minimal gateway intents",
+        "Graceful shutdown"
+      ]
+    },
+    {
+      "id": "go-http-api",
+      "name": "Go HTTP API",
+      "summary": "A small JSON API using the Go standard library.",
+      "description": "An HTTP API with a health endpoint, a validated greeting endpoint, request timeouts, and graceful shutdown. A small foundation for your own backend with no framework dependency.",
+      "category": "APIs",
+      "language": "Go",
+      "framework": "net/http",
+      "service": "web",
+      "docs": "https://docs.deplexo.com/guides/docker/",
+      "memoryMB": 128,
+      "env": [],
+      "features": [
+        "Standard library only",
+        "JSON responses",
+        "Input validation",
+        "Graceful shutdown"
+      ]
+    },
+    {
+      "id": "go-telegram-bot",
+      "name": "Go Telegram bot",
+      "summary": "A gotgbot starter with /start, /help, and /ping commands.",
+      "description": "A long-polling Telegram bot built with gotgbot. No public endpoint is needed. Includes graceful shutdown, explicit token configuration, and examples of command handling.",
+      "category": "Bots",
+      "language": "Go",
+      "framework": "gotgbot",
+      "service": "worker",
+      "docs": "https://docs.deplexo.com/guides/telegram-bot/",
+      "memoryMB": 128,
+      "env": [
+        {
+          "key": "TELEGRAM_BOT_TOKEN",
+          "description": "Create a bot with Telegram BotFather and paste its API token.",
+          "secret": true,
+          "required": true
+        }
+      ],
+      "features": [
+        "Long polling",
+        "Command handlers",
+        "Graceful shutdown",
+        "No database required"
+      ]
+    },
+    {
+      "id": "nextjs-portfolio",
+      "name": "Next.js portfolio",
+      "summary": "A personal site with project stories and a writing section.",
+      "description": "A single-page editorial portfolio with a project grid, expandable case studies, an about section, and writing notes. Edit a single content file to make it yours. Exported as static HTML for a small, predictable runtime.",
+      "category": "Websites",
+      "language": "TypeScript",
+      "framework": "Next.js",
+      "service": "web",
+      "docs": "https://docs.deplexo.com/guides/nextjs/",
+      "memoryMB": 128,
+      "env": [],
+      "features": [
+        "Static HTML export",
+        "Typed project content",
+        "Expandable case studies",
+        "Responsive, accessible layout"
+      ]
+    },
+    {
+      "id": "nextjs-website",
+      "name": "Next.js website",
+      "summary": "A complete product website with a server-rendered contact page.",
+      "description": "A product website for a small software company: a home page, feature and workflow sections, and a contact page. Runs the Next.js App Router as a standalone Node server, with a configurable email contact link and explicit writable cache handling.",
+      "category": "Websites",
+      "language": "TypeScript",
+      "framework": "Next.js",
+      "service": "web",
+      "docs": "https://docs.deplexo.com/guides/nextjs/",
+      "memoryMB": 512,
+      "env": [
+        {
+          "key": "CONTACT_EMAIL",
+          "description": "Public contact email displayed by the website. Does not configure outbound email.",
+          "secret": false,
+          "required": false,
+          "default": "hello@example.com"
+        }
+      ],
+      "features": [
+        "App Router and standalone output",
+        "Server-rendered pages",
+        "Runtime-configured contact page",
+        "Read-only container support"
+      ]
+    },
+    {
+      "id": "node-express",
+      "name": "Express API",
+      "summary": "An Express 5 backend with validation and health checks.",
+      "description": "A small Node.js API with a health endpoint, bounded JSON request bodies, explicit validation, graceful shutdown, and automated HTTP tests.",
+      "category": "APIs",
+      "language": "JavaScript",
+      "framework": "Express",
+      "service": "web",
+      "docs": "https://docs.deplexo.com/guides/docker/",
+      "memoryMB": 128,
+      "env": [],
+      "features": [
+        "Express 5",
+        "Bounded JSON bodies",
+        "HTTP behavior tests",
+        "Graceful shutdown"
+      ]
+    },
+    {
+      "id": "python-fastapi",
+      "name": "FastAPI API",
+      "summary": "A typed Python API with automatic OpenAPI documentation.",
+      "description": "A FastAPI service with a health check, validated request models, OpenAPI documentation, and tests. The container runs a single Uvicorn process with a non-root user.",
+      "category": "APIs",
+      "language": "Python",
+      "framework": "FastAPI",
+      "service": "web",
+      "docs": "https://docs.deplexo.com/guides/docker/",
+      "memoryMB": 256,
+      "env": [],
+      "features": [
+        "Typed request models",
+        "OpenAPI at /docs",
+        "Health endpoint",
+        "Non-root container"
+      ]
+    },
+    {
+      "id": "static-site",
+      "name": "Static personal website",
+      "summary": "A fast, dependency-free personal homepage.",
+      "description": "A one-page personal website made with HTML and CSS. Customize the introduction, selected work, and contact links. Served by an unprivileged Nginx container with runtime files in /tmp.",
+      "category": "Websites",
+      "language": "HTML",
+      "framework": "Nginx",
+      "service": "web",
+      "docs": "https://docs.deplexo.com/guides/docker/",
+      "memoryMB": 128,
+      "env": [],
+      "features": [
+        "No JavaScript required",
+        "Responsive layout",
+        "Unprivileged Nginx",
+        "No build tooling needed"
+      ]
+    }
+  ]
+}

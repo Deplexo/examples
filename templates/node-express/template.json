@@ -1,0 +1,19 @@
+{
+  "id": "node-express",
+  "name": "Express API",
+  "summary": "An Express 5 backend with validation and health checks.",
+  "description": "A small Node.js API with a health endpoint, bounded JSON request bodies, explicit validation, graceful shutdown, and automated HTTP tests.",
+  "category": "APIs",
+  "language": "JavaScript",
+  "framework": "Express",
+  "service": "web",
+  "docs": "https://docs.deplexo.com/guides/docker/",
+  "memoryMB": 128,
+  "env": [],
+  "features": [
+    "Express 5",
+    "Bounded JSON bodies",
+    "HTTP behavior tests",
+    "Graceful shutdown"
+  ]
+}

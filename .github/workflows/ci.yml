@@ -1,0 +1,118 @@
+name: Validate examples
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "23 5 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: examples-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  catalog:
+    name: Catalog and tooling
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: npm run validate
+      - run: npm test
+
+  templates:
+    name: ${{ matrix.id }}
+    needs: catalog
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - id: nextjs-portfolio
+            runtime: next
+          - id: nextjs-website
+            runtime: next
+          - id: go-telegram-bot
+            runtime: go
+          - id: go-discord-bot
+            runtime: go
+          - id: go-http-api
+            runtime: go
+          - id: node-express
+            runtime: node
+          - id: python-fastapi
+            runtime: python
+          - id: static-site
+            runtime: static
+    env:
+      TEMPLATE_ID: ${{ matrix.id }}
+      SMOKE_IMAGE: deplexo-example:${{ matrix.id }}
+      NEXT_TELEMETRY_DISABLED: "1"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            templates/**/package-lock.json
+      - name: Set up Go
+        if: matrix.runtime == 'go'
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7
+        with:
+          go-version-file: templates/${{ matrix.id }}/go.mod
+          cache-dependency-path: templates/**/go.sum
+      - name: Check Go starter
+        if: matrix.runtime == 'go'
+        working-directory: templates/${{ matrix.id }}
+        run: |
+          go mod tidy
+          git diff --exit-code -- go.mod go.sum
+          go test -race -shuffle=on ./...
+          go vet ./...
+          go build -trimpath -o "$RUNNER_TEMP/example-app" .
+      - name: Install Node dependencies
+        if: matrix.runtime == 'node' || matrix.runtime == 'next'
+        working-directory: templates/${{ matrix.id }}
+        run: npm ci
+      - name: Test Node API
+        if: matrix.runtime == 'node'
+        working-directory: templates/${{ matrix.id }}
+        run: npm test
+      - name: Build Next.js starter
+        if: matrix.runtime == 'next'
+        working-directory: templates/${{ matrix.id }}
+        run: npm run build
+      - name: Set up Python
+        if: matrix.runtime == 'python'
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: templates/python-fastapi/requirements-dev.txt
+      - name: Test Python API
+        if: matrix.runtime == 'python'
+        working-directory: templates/python-fastapi
+        run: |
+          python -m pip install --require-hashes -r requirements-dev.txt
+          python -m pytest -q
+      - name: Build container
+        run: docker build --tag "$SMOKE_IMAGE" "templates/$TEMPLATE_ID"
+      - name: Check container with a read-only filesystem
+        run: node scripts/smoke-container.mjs "$TEMPLATE_ID" "$SMOKE_IMAGE"

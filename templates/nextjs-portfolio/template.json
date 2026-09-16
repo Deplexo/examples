@@ -1,0 +1,19 @@
+{
+  "id": "nextjs-portfolio",
+  "name": "Next.js portfolio",
+  "summary": "A personal site with project stories and a writing section.",
+  "description": "A single-page editorial portfolio with a project grid, expandable case studies, an about section, and writing notes. Edit a single content file to make it yours. Exported as static HTML for a small, predictable runtime.",
+  "category": "Websites",
+  "language": "TypeScript",
+  "framework": "Next.js",
+  "service": "web",
+  "docs": "https://docs.deplexo.com/guides/nextjs/",
+  "memoryMB": 128,
+  "env": [],
+  "features": [
+    "Static HTML export",
+    "Typed project content",
+    "Expandable case studies",
+    "Responsive, accessible layout"
+  ]
+}

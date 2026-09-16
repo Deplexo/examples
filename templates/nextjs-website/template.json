@@ -1,0 +1,27 @@
+{
+  "id": "nextjs-website",
+  "name": "Next.js website",
+  "summary": "A complete product website with a server-rendered contact page.",
+  "description": "A product website for a small software company: a home page, feature and workflow sections, and a contact page. Runs the Next.js App Router as a standalone Node server, with a configurable email contact link and explicit writable cache handling.",
+  "category": "Websites",
+  "language": "TypeScript",
+  "framework": "Next.js",
+  "service": "web",
+  "docs": "https://docs.deplexo.com/guides/nextjs/",
+  "memoryMB": 512,
+  "env": [
+    {
+      "key": "CONTACT_EMAIL",
+      "description": "Public contact email displayed by the website. Does not configure outbound email.",
+      "secret": false,
+      "required": false,
+      "default": "hello@example.com"
+    }
+  ],
+  "features": [
+    "App Router and standalone output",
+    "Server-rendered pages",
+    "Runtime-configured contact page",
+    "Read-only container support"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "go-telegram-bot",
+  "name": "Go Telegram bot",
+  "summary": "A gotgbot starter with /start, /help, and /ping commands.",
+  "description": "A long-polling Telegram bot built with gotgbot. No public endpoint is needed. Includes graceful shutdown, explicit token configuration, and examples of command handling.",
+  "category": "Bots",
+  "language": "Go",
+  "framework": "gotgbot",
+  "service": "worker",
+  "docs": "https://docs.deplexo.com/guides/telegram-bot/",
+  "memoryMB": 128,
+  "env": [
+    {
+      "key": "TELEGRAM_BOT_TOKEN",
+      "description": "Create a bot with Telegram BotFather and paste its API token.",
+      "secret": true,
+      "required": true
+    }
+  ],
+  "features": [
+    "Long polling",
+    "Command handlers",
+    "Graceful shutdown",
+    "No database required"
+  ]
+}
