@@ -1,0 +1,19 @@
+{
+  "id": "static-site",
+  "name": "Static personal website",
+  "summary": "A fast, dependency-free personal homepage.",
+  "description": "A one-page personal website made with HTML and CSS. Customize the introduction, selected work, and contact links. Served by an unprivileged Nginx container with runtime files in /tmp.",
+  "category": "Websites",
+  "language": "HTML",
+  "framework": "Nginx",
+  "service": "web",
+  "docs": "https://docs.deplexo.com/guides/docker/",
+  "memoryMB": 128,
+  "env": [],
+  "features": [
+    "No JavaScript required",
+    "Responsive layout",
+    "Unprivileged Nginx",
+    "No build tooling needed"
+  ]
+}

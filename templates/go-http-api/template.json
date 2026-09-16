@@ -1,0 +1,19 @@
+{
+  "id": "go-http-api",
+  "name": "Go HTTP API",
+  "summary": "A small JSON API using the Go standard library.",
+  "description": "An HTTP API with a health endpoint, a validated greeting endpoint, request timeouts, and graceful shutdown. A small foundation for your own backend with no framework dependency.",
+  "category": "APIs",
+  "language": "Go",
+  "framework": "net/http",
+  "service": "web",
+  "docs": "https://docs.deplexo.com/guides/docker/",
+  "memoryMB": 128,
+  "env": [],
+  "features": [
+    "Standard library only",
+    "JSON responses",
+    "Input validation",
+    "Graceful shutdown"
+  ]
+}
