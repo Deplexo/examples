@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "source": {
     "repository": "https://github.com/Deplexo/examples",
-    "revision": "f47b94abe1d9a166f5532eab463da05de591b5665bf28a09080c8d87bc8f8c29"
+    "revision": "ba4282bde1b77d27fd3f54b66b8ccd9893f24d1764552f5c0e1f8250e625d7f6"
   },
   "templates": {
     "go-discord-bot": {
-      "digest": "8b03dcaef3030cb550721dbf42764d65a14a60f9bbbbd988de3a0bf29a974c54",
+      "digest": "4ec82f906c993e8597e572886f09566b3d8f8dd6085f978099dc839878c00a47",
       "files": [
         {
           "path": ".dockerignore",
@@ -30,11 +30,11 @@
         },
         {
           "path": "README.md",
-          "content": "# Go Discord bot\n\nA Discord Gateway bot with /ping and /about slash commands. Commands are registered in one development server for fast iteration, with minimal gateway intents and a graceful connection shutdown.\n\n[Deploy with Deplexo](https://deplexo.com/add) · [Deployment guide](https://docs.deplexo.com/guides/discord-bot/)\n\n## Run locally\n\nInstall Go 1.27 or newer.\n\n```sh\ngo mod download\ngo run .\n```\n\nSet the required variables in your shell before running the application. The application does not automatically load .env files.\n\n## Configuration\n\n- `DISCORD_BOT_TOKEN` (required): Bot token from the Discord Developer Portal.\n- `DISCORD_GUILD_ID` (required): ID of the development server where commands are registered.\n\nBefore starting, install the application in that server. In the [Discord Developer Portal](https://discord.com/developers/applications), enable Guild Install and generate an installation link with the `bot` and `applications.commands` scopes. Open the link and select a server you manage. This starter needs no administrator permission or privileged gateway intents. Enable Developer Mode in Discord, then copy that server's ID for `DISCORD_GUILD_ID`.\n\n## Container\n\n```sh\ndocker build -t go-discord-bot .\ndocker run --rm --read-only --tmpfs /tmp:rw,noexec,nosuid,size=100m --env-file .env go-discord-bot\n```\n\nCopy `.env.example` to `.env` and provide any required values before the container command. Web templates listen on port 3000. Worker templates have no public HTTP endpoint.\n\n## Deploy your own copy\n\nExport this starter into your own GitHub repository using the command below. Then select **Deploy with Deplexo**, import that repository, configure the required variables, and review your plan and deployment region. Your repository controls future deployments; changes to the examples collection do not automatically update your application.\n\nTo export manually, clone `Deplexo/examples` and run `node scripts/export.mjs go-discord-bot /path/to/new-app`. Initialize and push that directory to your own Git repository, then import it in Deplexo with the Dockerfile build method and repository root `./`.\n\nSuggested runtime memory: 128 MB. This is starting guidance, not a measured maximum or a guarantee that a specific plan is sufficient. Build memory and disk requirements differ from runtime requirements.\n\n## Operations\n\nLogs go to stdout/stderr. Deplexo starts a replacement after stopping the previous instance, so deployments can cause a brief interruption. Local container files are ephemeral unless a persistent volume is used. This starter does not need persistent storage.\n\nRun one instance for this starter. Stop any local copy using the same bot credentials before deploying. Check token permissions and outbound connectivity if the bot does not respond.\n\n## Verification and maintenance\n\nThe collection runs automated builds and tests. A passing build does not establish a successful live bot interaction; verify your bot in your own test chat or server. Inspect dependency update pull requests and keep your copy maintained.\n\nMIT licensed. See [LICENSE](LICENSE).\n\n## Deplexo runtime note\n\nThis bot does not serve HTTP. Deplexo currently assigns an application URL and performs a port check for all applications; the check may warn before deployment completes. Verify the bot through Telegram or Discord and the runtime logs. The assigned URL is not a bot control panel. No dummy HTTP server is required.\n"
+          "content": "# Go Discord bot\n\nA Discord Gateway bot with /ping and /about slash commands. Commands are registered in one development server for fast iteration, with minimal gateway intents and a graceful connection shutdown.\n\n[Deploy with Deplexo](https://deplexo.com/add) · [Deployment guide](https://docs.deplexo.com/guides/discord-bot/)\n\n## Run locally\n\nInstall Go 1.27 or newer.\n\n```sh\ngo mod download\ngo run .\n```\n\nSet the required variables in your shell before running the application. The application does not automatically load .env files.\n\n## Configuration\n\n- `DISCORD_BOT_TOKEN` (required): Bot token from the Discord Developer Portal.\n- `DISCORD_GUILD_ID` (required): ID of the development server where commands are registered.\n\nBefore starting, install the application in that server. In the [Discord Developer Portal](https://discord.com/developers/applications), enable Guild Install and generate an installation link with the `bot` and `applications.commands` scopes. Open the link and select a server you manage. This starter needs no administrator permission or privileged gateway intents. Enable Developer Mode in Discord, then copy that server's ID for `DISCORD_GUILD_ID`.\n\n## Container\n\n```sh\ndocker build -t go-discord-bot .\ndocker run --rm --read-only --tmpfs /tmp:rw,noexec,nosuid,size=100m --env-file .env go-discord-bot\n```\n\nCopy `.env.example` to `.env` and provide any required values before the container command. Web templates listen on port 3000. Worker templates have no public HTTP endpoint.\n\n## Deploy your own copy\n\nExport this starter into your own GitHub repository using the command below. Then select **Deploy with Deplexo**, import that repository, configure the required variables, and review your plan and deployment region. Your repository controls future deployments; changes to the examples collection do not automatically update your application.\n\nTo export manually, clone `Deplexo/examples` and run `node scripts/export.mjs go-discord-bot /path/to/new-app`. Initialize and push that directory to your own Git repository, then import it in Deplexo with the Dockerfile build method and repository root `./`.\n\nSuggested runtime memory: 128 MB. This is starting guidance, not a measured maximum or a guarantee that a specific plan is sufficient. Build memory and disk requirements differ from runtime requirements.\n\n## Operations\n\nLogs go to stdout/stderr. Deplexo starts a replacement after stopping the previous instance, so deployments can cause a brief interruption. Local container files are ephemeral unless a persistent volume is used. This starter does not need persistent storage.\n\nRun one instance for this starter. Stop any local copy using the same bot credentials before deploying. Check token permissions and outbound connectivity if the bot does not respond.\n\n## Verification and maintenance\n\nThe collection runs automated builds and tests. A passing build does not establish a successful live bot interaction; verify your bot in your own test chat or server. Inspect dependency update pull requests and keep your copy maintained.\n\nMIT licensed. See [LICENSE](LICENSE).\n\n## Deplexo runtime note\n\nThe included `deplexo.yaml` uses `type: worker`. Deplexo checks that the bot keeps running, without publishing a port or assigning a URL. Verify the bot through Discord and its runtime logs. Existing web apps cannot change type through YAML; create a worker app and stop the old bot before starting its replacement.\n"
         },
         {
           "path": "deplexo.yaml",
-          "content": "framework: dockerfile\ndockerfile: Dockerfile\n"
+          "content": "version: 1\ntype: worker\nbuild:\n  framework: dockerfile\n  dockerfile: Dockerfile\n"
         },
         {
           "path": "go.mod",
@@ -59,7 +59,7 @@
       ]
     },
     "go-http-api": {
-      "digest": "80372b2b57bfec467322b5767673b146699ad113f9545a7d9ae57745e8b94150",
+      "digest": "8f3b0362522c47bc300e2542d98326920d555dce55c6ea2991a5d5fc764bdc3b",
       "files": [
         {
           "path": ".dockerignore",
@@ -87,7 +87,7 @@
         },
         {
           "path": "deplexo.yaml",
-          "content": "framework: dockerfile\ndockerfile: Dockerfile\nport: 3000\n"
+          "content": "version: 1\ntype: web\nbuild:\n  framework: dockerfile\n  dockerfile: Dockerfile\nrun:\n  port: 3000\n"
         },
         {
           "path": "go.mod",
@@ -112,7 +112,7 @@
       ]
     },
     "go-telegram-bot": {
-      "digest": "1d3f86880b7be7910286b38a45aeeeef390748160f8a5126f304a9c8d045867e",
+      "digest": "a847b7fa2f12d1867b93ffc29e8db32990922a2b22e52ea1e79e55785df3e1b6",
       "files": [
         {
           "path": ".dockerignore",
@@ -136,11 +136,11 @@
         },
         {
           "path": "README.md",
-          "content": "# Go Telegram bot\n\nA long-polling Telegram bot built with gotgbot. No public endpoint is needed. Includes graceful shutdown, explicit token configuration, and examples of command handling.\n\n[Deploy with Deplexo](https://deplexo.com/add) · [Deployment guide](https://docs.deplexo.com/guides/telegram-bot/)\n\n## Run locally\n\nInstall Go 1.27 or newer.\n\n```sh\ngo mod download\ngo run .\n```\n\nSet the required variables in your shell before running the application. The application does not automatically load .env files.\n\n## Configuration\n\n- `TELEGRAM_BOT_TOKEN` (required): Create a bot with Telegram BotFather and paste its API token.\n\n## Container\n\n```sh\ndocker build -t go-telegram-bot .\ndocker run --rm --read-only --tmpfs /tmp:rw,noexec,nosuid,size=100m --env-file .env go-telegram-bot\n```\n\nCopy `.env.example` to `.env` and provide any required values before the container command. Web templates listen on port 3000. Worker templates have no public HTTP endpoint.\n\n## Deploy your own copy\n\nExport this starter into your own GitHub repository using the command below. Then select **Deploy with Deplexo**, import that repository, configure the required variables, and review your plan and deployment region. Your repository controls future deployments; changes to the examples collection do not automatically update your application.\n\nTo export manually, clone `Deplexo/examples` and run `node scripts/export.mjs go-telegram-bot /path/to/new-app`. Initialize and push that directory to your own Git repository, then import it in Deplexo with the Dockerfile build method and repository root `./`.\n\nSuggested runtime memory: 128 MB. This is starting guidance, not a measured maximum or a guarantee that a specific plan is sufficient. Build memory and disk requirements differ from runtime requirements.\n\n## Operations\n\nLogs go to stdout/stderr. Deplexo starts a replacement after stopping the previous instance, so deployments can cause a brief interruption. Local container files are ephemeral unless a persistent volume is used. This starter does not need persistent storage.\n\nRun one instance for this starter. Stop any local copy using the same bot credentials before deploying. Check token permissions and outbound connectivity if the bot does not respond.\n\n## Verification and maintenance\n\nThe collection runs automated builds and tests. A passing build does not establish a successful live bot interaction; verify your bot in your own test chat or server. Inspect dependency update pull requests and keep your copy maintained.\n\nMIT licensed. See [LICENSE](LICENSE).\n\n## Deplexo runtime note\n\nThis bot does not serve HTTP. Deplexo currently assigns an application URL and performs a port check for all applications; the check may warn before deployment completes. Verify the bot through Telegram or Discord and the runtime logs. The assigned URL is not a bot control panel. No dummy HTTP server is required.\n"
+          "content": "# Go Telegram bot\n\nA long-polling Telegram bot built with gotgbot. No public endpoint is needed. Includes graceful shutdown, explicit token configuration, and examples of command handling.\n\n[Deploy with Deplexo](https://deplexo.com/add) · [Deployment guide](https://docs.deplexo.com/guides/telegram-bot/)\n\n## Run locally\n\nInstall Go 1.27 or newer.\n\n```sh\ngo mod download\ngo run .\n```\n\nSet the required variables in your shell before running the application. The application does not automatically load .env files.\n\n## Configuration\n\n- `TELEGRAM_BOT_TOKEN` (required): Create a bot with Telegram BotFather and paste its API token.\n\n## Container\n\n```sh\ndocker build -t go-telegram-bot .\ndocker run --rm --read-only --tmpfs /tmp:rw,noexec,nosuid,size=100m --env-file .env go-telegram-bot\n```\n\nCopy `.env.example` to `.env` and provide any required values before the container command. Web templates listen on port 3000. Worker templates have no public HTTP endpoint.\n\n## Deploy your own copy\n\nExport this starter into your own GitHub repository using the command below. Then select **Deploy with Deplexo**, import that repository, configure the required variables, and review your plan and deployment region. Your repository controls future deployments; changes to the examples collection do not automatically update your application.\n\nTo export manually, clone `Deplexo/examples` and run `node scripts/export.mjs go-telegram-bot /path/to/new-app`. Initialize and push that directory to your own Git repository, then import it in Deplexo with the Dockerfile build method and repository root `./`.\n\nSuggested runtime memory: 128 MB. This is starting guidance, not a measured maximum or a guarantee that a specific plan is sufficient. Build memory and disk requirements differ from runtime requirements.\n\n## Operations\n\nLogs go to stdout/stderr. Deplexo starts a replacement after stopping the previous instance, so deployments can cause a brief interruption. Local container files are ephemeral unless a persistent volume is used. This starter does not need persistent storage.\n\nRun one instance for this starter. Stop any local copy using the same bot credentials before deploying. Check token permissions and outbound connectivity if the bot does not respond.\n\n## Verification and maintenance\n\nThe collection runs automated builds and tests. A passing build does not establish a successful live bot interaction; verify your bot in your own test chat or server. Inspect dependency update pull requests and keep your copy maintained.\n\nMIT licensed. See [LICENSE](LICENSE).\n\n## Deplexo runtime note\n\nThe included `deplexo.yaml` uses `type: worker`. Deplexo checks that the bot keeps running, without publishing a port or assigning a URL. Verify the bot through Telegram and its runtime logs. Existing web apps cannot change type through YAML; create a worker app and stop the old bot before starting its replacement.\n"
         },
         {
           "path": "deplexo.yaml",
-          "content": "framework: dockerfile\ndockerfile: Dockerfile\n"
+          "content": "version: 1\ntype: worker\nbuild:\n  framework: dockerfile\n  dockerfile: Dockerfile\n"
         },
         {
           "path": "go.mod",
@@ -165,7 +165,7 @@
       ]
     },
     "nextjs-portfolio": {
-      "digest": "57dab07a3da211238b16d867d80f183f6710091c55584b9648973743fdf3ce0d",
+      "digest": "521462c4d228962bdc316b828703d2a32959bb8306f3b6f707425ae9331be1df",
       "files": [
         {
           "path": ".dockerignore",
@@ -209,7 +209,7 @@
         },
         {
           "path": "deplexo.yaml",
-          "content": "framework: dockerfile\ndockerfile: Dockerfile\nport: 3000\n"
+          "content": "version: 1\ntype: web\nbuild:\n  framework: dockerfile\n  dockerfile: Dockerfile\nrun:\n  port: 3000\n"
         },
         {
           "path": "next-env.d.ts",
@@ -242,7 +242,7 @@
       ]
     },
     "nextjs-website": {
-      "digest": "9376f0c741eb082c54f65558c47bc4df93e92ecf7aefb4e8c3d786f2f72fd6b9",
+      "digest": "d7778ed0048d95c9fb0142b091efd26f1363c0fe098c24df02fb81a207805dc5",
       "files": [
         {
           "path": ".dockerignore",
@@ -294,7 +294,7 @@
         },
         {
           "path": "deplexo.yaml",
-          "content": "framework: dockerfile\ndockerfile: Dockerfile\nport: 3000\n"
+          "content": "version: 1\ntype: web\nbuild:\n  framework: dockerfile\n  dockerfile: Dockerfile\nrun:\n  port: 3000\n"
         },
         {
           "path": "next-env.d.ts",
@@ -327,7 +327,7 @@
       ]
     },
     "node-express": {
-      "digest": "9dd95ffd8107ff7a3a18cc423cca7d57ed87eaf849b11bcbced0b659d8dca695",
+      "digest": "f4ac3c2bf620099b2b78e57ff4e1f6ef5c568282f63ad28e2ad42e3dcaf02ec1",
       "files": [
         {
           "path": ".dockerignore",
@@ -363,7 +363,7 @@
         },
         {
           "path": "deplexo.yaml",
-          "content": "framework: dockerfile\ndockerfile: Dockerfile\nport: 3000\n"
+          "content": "version: 1\ntype: web\nbuild:\n  framework: dockerfile\n  dockerfile: Dockerfile\nrun:\n  port: 3000\n"
         },
         {
           "path": "package-lock.json",
@@ -384,7 +384,7 @@
       ]
     },
     "python-fastapi": {
-      "digest": "6f7bf807c0c1ae9945a6eac3e0d598df159e19cfd5ab06c203d5c807085b385f",
+      "digest": "f483fd8dcf80ff391c53044492203e25c55231eb2de7a505a2a5cc3791f9742b",
       "files": [
         {
           "path": ".dockerignore",
@@ -416,7 +416,7 @@
         },
         {
           "path": "deplexo.yaml",
-          "content": "framework: dockerfile\ndockerfile: Dockerfile\nport: 3000\n"
+          "content": "version: 1\ntype: web\nbuild:\n  framework: dockerfile\n  dockerfile: Dockerfile\nrun:\n  port: 3000\n"
         },
         {
           "path": "requirements-dev.in",
@@ -445,7 +445,7 @@
       ]
     },
     "static-site": {
-      "digest": "a95f15083d74d02f65c10e8dac93a3f30ba2e173356db5299e3eb83e75decb87",
+      "digest": "2989eb7cdc517e4f842edba1280f0f1ef7c9f87d853f830f92b5a2f387a097fd",
       "files": [
         {
           "path": ".dockerignore",
@@ -473,7 +473,7 @@
         },
         {
           "path": "deplexo.yaml",
-          "content": "framework: dockerfile\ndockerfile: Dockerfile\nport: 3000\n"
+          "content": "version: 1\ntype: web\nbuild:\n  framework: dockerfile\n  dockerfile: Dockerfile\nrun:\n  port: 3000\n"
         },
         {
           "path": "index.html",

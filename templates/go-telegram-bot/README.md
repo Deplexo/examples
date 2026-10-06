@@ -50,4 +50,4 @@ MIT licensed. See [LICENSE](LICENSE).
 
 ## Deplexo runtime note
 
-This bot does not serve HTTP. Deplexo currently assigns an application URL and performs a port check for all applications; the check may warn before deployment completes. Verify the bot through Telegram or Discord and the runtime logs. The assigned URL is not a bot control panel. No dummy HTTP server is required.
+The included `deplexo.yaml` uses `type: worker`. Deplexo checks that the bot keeps running, without publishing a port or assigning a URL. Verify the bot through Telegram and its runtime logs. Existing web apps cannot change type through YAML; create a worker app and stop the old bot before starting its replacement.

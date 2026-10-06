@@ -30,6 +30,8 @@ npm run dev
 
 The exporter refuses an existing destination and includes the MIT license and source provenance. Each starter is independent; you do not need the rest of this repository. GitHub's repository template button copies the whole collection, so use a specific starter export instead.
 
+Each exported starter has a version 1 `deplexo.yaml` at its source root. Web starters set `type: web` and `run.port: 3000`; polling and Gateway bots set `type: worker` and have no public port or URL. Explicit YAML values override dashboard defaults. Keep secrets in environment settings. See the [YAML reference and migration guide](https://docs.deplexo.com/reference/configuration/) when updating an older exported starter.
+
 ## Catalog
 
 `template.json` contains display metadata, configuration input descriptions, service type, and suggested runtime memory. `deplexo.yaml` and the Dockerfile define deployment behavior. Run `npm ci && npm run catalog` to validate metadata and generate catalog.json and deterministic deployment bundles. The generated catalog and bundles are portable artifacts for integrations. Deploy the exported starters through the existing repository import flow.

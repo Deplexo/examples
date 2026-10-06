@@ -1,2 +1,5 @@
-framework: dockerfile
-dockerfile: Dockerfile
+version: 1
+type: worker
+build:
+  framework: dockerfile
+  dockerfile: Dockerfile

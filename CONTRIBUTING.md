@@ -4,6 +4,7 @@ Open an issue to discuss a new template, or send a pull request for a correction
 
 1. Add a folder under templates with template.json, README.md, LICENSE, Dockerfile, deplexo.yaml, .dockerignore, .gitignore, and .env.example.
 2. Use one application per template. Pin dependencies and include lock files. Keep secrets out of code, images, fixtures, and screenshots.
+   Use `version: 1`, an explicit `type`, and `build.framework: dockerfile` in the source-root `deplexo.yaml`. Web starters set `run.port: 3000`; workers omit `run.port`. Follow the [configuration reference](https://docs.deplexo.com/reference/configuration/).
 3. Provide a local quickstart, configuration descriptions, meaningful tests, and an expected result. Use minimal permissions for integrations.
 4. Run npm ci, npm run catalog, npm run validate, npm test, and the template's language tests. Test the image with a read-only root filesystem and writable /tmp.
 5. Include screenshots for visual changes. Describe external prerequisites and verification limits honestly.
