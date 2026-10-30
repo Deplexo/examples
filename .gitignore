@@ -10,3 +10,5 @@ dist/
 !.env.example
 *.log
 *.tsbuildinfo
+/catalog.json
+/bundles.json

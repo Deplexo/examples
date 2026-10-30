@@ -43,12 +43,8 @@ export async function buildCatalog() {
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const data = await buildCatalog();
-  for (const [name, value] of Object.entries(data)) {
-    const output = JSON.stringify(value, null, 2) + '\n';
-    const path = join(root, `${name}.json`);
-    if (process.argv.includes('--check')) {
-      if (await readFile(path, 'utf8') !== output) throw new Error(`${name}.json is stale; run npm run catalog`);
-    } else await writeFile(path, output);
+  if (!process.argv.includes('--check')) {
+    for (const [name, value] of Object.entries(data)) await writeFile(join(root, `${name}.json`), JSON.stringify(value, null, 2) + '\n');
   }
   console.log(`Validated ${data.catalog.templates.length} templates`);
 }

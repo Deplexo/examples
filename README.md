@@ -34,11 +34,11 @@ Each exported starter has a version 1 `deplexo.yaml` at its source root. Web sta
 
 ## Catalog
 
-`template.json` contains display metadata, configuration input descriptions, service type, and suggested runtime memory. `deplexo.yaml` and the Dockerfile define deployment behavior. Run `npm ci && npm run catalog` to validate metadata and generate catalog.json and deterministic deployment bundles. The generated catalog and bundles are portable artifacts for integrations. Deploy the exported starters through the existing repository import flow.
+`template.json` contains display metadata, configuration input descriptions, service type, and suggested runtime memory. `deplexo.yaml` and the Dockerfile define deployment behavior. Run `npm ci && npm run catalog` to validate metadata and write catalog.json and deterministic deployment bundles (bundles.json) for integrations. Generate them from any checkout; they are not committed. Deploy the exported starters through the existing repository import flow.
 
 ## Verification
 
-Run `npm run validate` and `npm test`, followed by each application's tests and container build. CI repeats these checks on pull requests and weekly. Bot interaction tests require your own Telegram/Discord test credentials and are separate from build verification.
+Run `npm run validate` and `npm test`, followed by each application's tests and container build. CI repeats these checks on every pull request and push to main. Bot interaction tests require your own Telegram/Discord test credentials and are separate from build verification.
 
 Dependency updates do not automatically change exported applications. Review and update your copy. Memory guidance is a starting point, not a pricing promise or a capacity guarantee.
 
