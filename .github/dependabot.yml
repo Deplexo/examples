@@ -3,22 +3,42 @@ updates:
   - package-ecosystem: npm
     directories: ["/", "/templates/nextjs-portfolio", "/templates/nextjs-website", "/templates/node-express"]
     schedule:
-      interval: weekly
+      interval: monthly
     open-pull-requests-limit: 5
+    groups:
+      npm:
+        patterns: ["*"]
+        update-types: [minor, patch]
   - package-ecosystem: gomod
     directories: ["/templates/go-telegram-bot", "/templates/go-discord-bot", "/templates/go-http-api"]
     schedule:
-      interval: weekly
+      interval: monthly
     open-pull-requests-limit: 5
+    groups:
+      gomod:
+        patterns: ["*"]
+        update-types: [minor, patch]
   - package-ecosystem: pip
     directory: /templates/python-fastapi
     schedule:
-      interval: weekly
+      interval: monthly
+    groups:
+      pip:
+        patterns: ["*"]
+        update-types: [minor, patch]
   - package-ecosystem: docker
     directories: ["/templates/*"]
     schedule:
-      interval: weekly
+      interval: monthly
+    groups:
+      docker:
+        patterns: ["*"]
+        update-types: [minor, patch]
   - package-ecosystem: github-actions
     directory: /
     schedule:
-      interval: weekly
+      interval: monthly
+    groups:
+      github-actions:
+        patterns: ["*"]
+        update-types: [minor, patch]
